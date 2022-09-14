@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { XCircleIcon } from '@heroicons/react/20/solid';
-import Cookies from 'js-cookie'
+import Cookies from 'js-cookie';
 
 import Layout from '../components/layout';
 
 const dashboardUrl = process.env.NEXT_PUBLIC_DASHBOARD_URL;
-const cookieDomain = process.env.NEXT_PUBLIC_VERCEL_URL;
+const cookieDomain = process.env.NEXT_PUBLIC_COOKIE_DOMAIN;
 
 const IndexPage = () => {
   const [errorMessage, setErrorMessage] = useState('');
@@ -14,21 +14,24 @@ const IndexPage = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch('/api/login', { method: 'POST', body: JSON.stringify({ password: event.target.password.value }) });
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        body: JSON.stringify({ password: event.target.password.value }),
+      });
       const data = await response.json();
 
       if (response.status !== 201) {
         setErrorMessage(data.message);
       } else {
         setErrorMessage('');
-        Cookies.set('VERCEL_AUTH_MIDDLEWARE_AUTHORIZED', '1', { domain: cookieDomain, expires: 1 });
+        Cookies.set('VERCEL_MIDDLEWARE_AUTH_DEMO_AUTHORIZED', '1', { domain: cookieDomain, expires: 1 });
         window.location.href = dashboardUrl;
       }
     } catch (error) {
       setErrorMessage(error.message);
       console.log(error);
     }
-  }
+  };
 
   return (
     <Layout>
@@ -64,20 +67,22 @@ const IndexPage = () => {
               </div>
             </form>
           </div>
-          {errorMessage && <div className="rounded-md bg-red-100 mt-8 p-4">
-            <div className="flex">
-              <div className="flex-shrink-0">
-                <XCircleIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
-              </div>
-              <div className="ml-3 flex-1 md:flex md:justify-between">
-                <p className="text-sm text-red-700">{errorMessage}</p>
+          {errorMessage && (
+            <div className="rounded-md bg-red-100 mt-8 p-4">
+              <div className="flex">
+                <div className="flex-shrink-0">
+                  <XCircleIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
+                </div>
+                <div className="ml-3 flex-1 md:flex md:justify-between">
+                  <p className="text-sm text-red-700">{errorMessage}</p>
+                </div>
               </div>
             </div>
-          </div>}
+          )}
         </div>
       </div>
     </Layout>
-  )
-}
+  );
+};
 
 export default IndexPage;
