@@ -2,6 +2,9 @@
 
 An example that shows how you can use [Vercel Middleware](https://nextjs.org/docs/advanced-features/middleware) to control access to an app
 
+> **Warning**
+> This only provides limited protection and it's easy for users to duplicate the auth cookie. Make sure you understand the risks and tradeoffs before using this in a production application.
+
 This repo includes two apps:
 
 - [Dashboard](./apps/dashboard): An app that you want to password protect
