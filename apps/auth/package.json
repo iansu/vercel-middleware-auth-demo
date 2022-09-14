@@ -1,0 +1,32 @@
+{
+  "name": "auth",
+  "version": "1.0.0",
+  "description": "A Next.js app that sets a cookie after a password has been provided",
+  "author": "Ian Sutherland <ian@iansutherland.ca>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "next --port 3001",
+    "start:production": "next start",
+    "build": "next build",
+    "typecheck": "tsc"
+  },
+  "dependencies": {
+    "next": "12.3.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@heroicons/react": "^2.0.11",
+    "@tailwindcss/forms": "^0.5.3",
+    "@types/js-cookie": "^3.0.2",
+    "@types/node": "^12.12.21",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.1",
+    "autoprefixer": "^10.4.10",
+    "js-cookie": "^3.0.1",
+    "postcss": "^8.4.16",
+    "tailwindcss": "^3.1.8",
+    "typescript": "4.8.3"
+  }
+}

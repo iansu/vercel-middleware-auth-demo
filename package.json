@@ -1,0 +1,26 @@
+{
+  "name": "vercel-middleware-auth-demo",
+  "version": "1.0.0",
+  "description": "An example that shows how you can use Vercel Middleware to control access to an app",
+  "author": "Ian Sutherland <ian@iansutherland.ca>",
+  "license": "MIT",
+  "private": true,
+  "keywords": [
+    "vercel",
+    "middleware",
+    "authentication"
+  ],
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "format": "prettier --write '**/*.{ts,js,json,md,yml,yaml}'",
+    "format:check": "prettier --check '**/*.{ts,js,json,md,yml,yaml}'",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "husky": "^8.0.0",
+    "prettier": "^2.7.1",
+    "pretty-quick": "^3.1.3"
+  }
+}
